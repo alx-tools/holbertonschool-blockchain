@@ -1,0 +1,83 @@
+.TH llist_insert_node 3 "June 2018" "Holberton School"
+
+.SH NAME
+llist_insert_node - Inserts a node at a specific location in a list
+
+.SH SYNOPSIS
+.B #include <llist.h>
+
+.BI "typedef void *" "llist_node_t" ";"
+
+.BI "typedef int (*" "node_ident_t" ")(llist_node_t, void *);"
+
+.BI "int llist_insert_node(llist_t *" "list" ", llist_node_t " "node" ", node_ident_t " "identifier" ", void *" "arg" ", int " "flags" ");"
+
+.SH DESCRIPTION
+.BR "llist_insert_node" "() will insert a new node to the linked list pointed to by"
+.IR "list" ", right before or after a reference node."
+
+.RI "The reference node is identified using the " "identifier" " function."
+.RI "This function will be called for each node in the list, passing " "arg" " as a second parameter."
+.RI "When this function returns a non-zero value, the current node is considered the reference node."
+
+.RI "The address held by " "node" " will be stored inside the new node."
+
+.IR "flags" " can hold either of the following values:"
+.RS
+
+.B ADD_NODE_BEFORE
+.RS
+The new node will be inserted right before the reference node
+.RE
+.RE
+
+.RS
+.B ADD_NODE_AFTER
+.RS
+The new node will be inserted right after the reference node
+.RE
+.RE
+
+.SH RETURN VALUE
+.RB "Upon success, " "llist_insert_node" "() returns 0. Otherwise, -1 is returned, and the global variable"
+.IR "llist_errno" " is set with the appropriate value."
+
+.SH ERRORS
+.B LLIST_NULL_ARGUMENT
+.RS
+.RI "Either " "list" " or " "identifier" " points to NULL."
+.RE
+
+.B LLIST_MALLOC_ERROR
+.RS
+.BR "malloc" "(3) returned an error."
+.RE
+
+.B LLIST_NODE_NOT_FOUND
+.RS
+.R "The reference node could not be found"
+.RE
+
+.B LLIST_MULTITHREAD_ISSUE
+.RS
+.RI "Only if " "flags" " was set to"
+.BR "MT_SUPPORT_TRUE" " when"
+.IR "list" " was created. An error occured whith multithreading safety."
+.RE
+
+.SH SEE ALSO
+.BR "llist_add_node" "(3),"
+.BR "llist_append" "(3),"
+.BR "llist_create" "(3),"
+.BR "llist_destroy" "(3),"
+.BR "llist_empty" "(3),"
+.BR "llist_find_node" "(3),"
+.BR "llist_for_each" "(3),"
+.BR "llist_get_head" "(3),"
+.BR "llist_get_node_at" "(3),"
+.BR "llist_get_tail" "(3),"
+.BR "llist_pop" "(3),"
+.BR "llist_remove_node" "(3),"
+.BR "llist_reverse" "(3),"
+.BR "llist_size" "(3),"
+.BR "llist_sort" "(3)"

@@ -1,0 +1,45 @@
+.TH llist_destroy 3 "June 2018" "Holberton School"
+
+.SH NAME
+llist_destroy - Destroys a linked list
+
+.SH SYNOPSIS
+.B "#include <llist.h>"
+
+.BI "typedef void (*" "node_dtor_t" ")(llist_node_t node);"
+
+.BI "int llist_destroy(llist_t *" "list" ", int " "destroy_nodes" ", node_dtor_t " "destructor" ");"
+
+.SH DESCRIPTION
+.BR "llist_destroy" "() will deallocate the linked list pointed to by"
+.IR "list" "."
+
+.RI "If " "destroy_nodes" " holds a non-zero value, all the nodes will also be destroyed using the function pointed to by " "destructor" ". If " "destructor" " is"
+.BR "NULL" ", the function " "free" "(3) will be used instead."
+
+.SH RETURN VALUE
+.RB "Upon success, " "llist_destroy" "() returns 0. Otherwise, -1 is returned, and the global variable"
+.IR "llist_errno" " is set with the appropriate value."
+
+.SH ERRORS
+.B LLIST_NULL_ARGUMENT
+.RS
+.IR "list" " points to NULL."
+.RE
+
+.SH SEE ALSO
+.BR "llist_add_node" "(3),"
+.BR "llist_append" "(3),"
+.BR "llist_create" "(3),"
+.BR "llist_empty" "(3),"
+.BR "llist_find_node" "(3),"
+.BR "llist_for_each" "(3),"
+.BR "llist_get_head" "(3),"
+.BR "llist_get_node_at" "(3),"
+.BR "llist_get_tail" "(3),"
+.BR "llist_insert_node" "(3),"
+.BR "llist_pop" "(3),"
+.BR "llist_remove_node" "(3),"
+.BR "llist_reverse" "(3),"
+.BR "llist_size" "(3),"
+.BR "llist_sort" "(3)"

@@ -1,0 +1,64 @@
+.TH llist_create 3 "June 2018" "Holberton School"
+
+.SH NAME
+llist_create - Creates a linked list
+
+.SH SYNOPSIS
+.B #include <llist.h>
+
+.BI "llist_t *llist_create(unsigned int " "flags" ");"
+
+.SH DESCRIPTION
+.BR "llist_create" "() will allocate enough space to hold a " "llist_t " "structure, using " "malloc" "(3). Once the structure is allocated and initialized, its address is returned."
+
+.IR "flags" " can hold either of the following values:"
+.RS
+
+.B MT_SUPPORT_FALSE
+.RS
+Multithreading safety is disaled. Use this if you don't intend to use the returned linked list within multiple concurent threads.
+.RE
+.RE
+
+.RS
+.B MT_SUPPORT_TRUE
+.RS
+Multithreading safety is enabled. Use this if you intend to use the returned linked list within multiple concurent threads.
+.RE
+.RE
+
+.SH RETURN VALUE
+.RB "A pointer to the newly created list is returned upon success. Upon failure, " "NULL" " is returned and, the global variable"
+.IR "llist_errno" " is set with the appropriate value."
+
+.SH ERRORS
+.B LLIST_MALLOC_ERROR
+.RS
+.BR "malloc" "(3) returned an error."
+.RE
+
+.B LLIST_MULTITHREAD_ISSUE
+.RS
+.RI "Only if " "flags" " is set to"
+.BR "MT_SUPPORT_TRUE" ". An error occured while setting up multithreading safety."
+.RE
+
+.SH NOTES
+.RB "Any linked list created using " "llist_create" " should be destroyed using " "llist_destroy" "(3)."
+
+.SH SEE ALSO
+.BR "llist_add_node" "(3),"
+.BR "llist_append" "(3),"
+.BR "llist_destroy" "(3),"
+.BR "llist_empty" "(3),"
+.BR "llist_find_node" "(3),"
+.BR "llist_for_each" "(3),"
+.BR "llist_get_head" "(3),"
+.BR "llist_get_node_at" "(3),"
+.BR "llist_get_tail" "(3),"
+.BR "llist_insert_node" "(3),"
+.BR "llist_pop" "(3),"
+.BR "llist_remove_node" "(3),"
+.BR "llist_reverse" "(3),"
+.BR "llist_size" "(3),"
+.BR "llist_sort" "(3)"

@@ -1,0 +1,55 @@
+.TH llist_get_tail 3 "June 2018" "Holberton School"
+
+.SH NAME
+llist_get_tail - Retrieves the tail node of a list
+
+.SH SYNOPSIS
+.B #include <llist.h>
+
+.BI "typedef void *" "llist_node_t" ";"
+
+.BI "llist_node_t llist_get_tail(llist_t *" "list" ");"
+
+.SH DESCRIPTION
+.BR "llist_get_tail" "() will retrieve the node at the tail of the linked list pointed to by"
+.IR "list" "."
+
+.SH RETURN VALUE
+.RB "Upon success, " "llist_get_tail" "() returns a pointer to the tail node."
+.RB "Otherwise, " "NULL" " is returned, and the global variable"
+.IR "llist_errno" " is set with the appropriate value."
+
+.SH ERRORS
+.B LLIST_NULL_ARGUMENT
+.RS
+.IR "list" " points to NULL."
+.RE
+
+.B LLIST_NODE_NOT_FOUND
+.RS
+.R "The node could not be found"
+.RE
+
+.B LLIST_MULTITHREAD_ISSUE
+.RS
+.RI "Only if " "flags" " was set to"
+.BR "MT_SUPPORT_TRUE" " when"
+.IR "list" " was created. An error occured whith multithreading safety."
+.RE
+
+.SH SEE ALSO
+.BR "llist_add_node" "(3),"
+.BR "llist_append" "(3),"
+.BR "llist_create" "(3),"
+.BR "llist_destroy" "(3),"
+.BR "llist_empty" "(3),"
+.BR "llist_find_node" "(3),"
+.BR "llist_for_each" "(3),"
+.BR "llist_get_head" "(3),"
+.BR "llist_get_node_at" "(3),"
+.BR "llist_insert_node" "(3),"
+.BR "llist_pop" "(3),"
+.BR "llist_remove_node" "(3),"
+.BR "llist_reverse" "(3),"
+.BR "llist_size" "(3),"
+.BR "llist_sort" "(3)"
