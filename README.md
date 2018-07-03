@@ -21,6 +21,14 @@ sudo cp man/*.3 /usr/local/man/man3/
 sudo mandb
 ```
 
+## Usage
+
+Don't forget to compile your program using the following link flags:
+
+```
+gcc [...] -lllist -pthread
+```
+
 ## API
 
 ### **llist_create** - Creates a list
