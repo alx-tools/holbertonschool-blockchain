@@ -11,6 +11,7 @@ Install the library and header file
 ```
 sudo cp libllist.so /usr/local/lib/
 sudo cp llist.h /usr/local/include/
+sudo ldconfig
 ```
 
 Install the man pages
