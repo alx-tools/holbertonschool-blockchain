@@ -6,21 +6,7 @@ C API to create and manipulate linked lists.
 
 This library has been compiled for Linux 64 bit.
 
-Install the library and header file
-
-```
-sudo cp libllist.so /usr/local/lib/
-sudo cp llist.h /usr/local/include/
-sudo ldconfig
-```
-
-Install the man pages
-
-```
-sudo mkdir /usr/local/man/man3
-sudo cp man/*.3 /usr/local/man/man3/
-sudo mandb
-```
+Run the following command to install it: `sudo ./install.bash`
 
 ## Usage
 
