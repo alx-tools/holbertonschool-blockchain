@@ -167,7 +167,8 @@ int llist_remove_node(llist_t *list, node_ident_t identifier, void *arg,
  *         returned and, the global variable `llist_errno` is set with the
  *         appropriate value
  */
-llist_node_t llist_find_node(llist_t *list, node_ident_t identifier, void *arg);
+llist_node_t llist_find_node(llist_t *list, node_ident_t identifier,
+	void *arg);
 
 /**
  * llist_get_node_at - Gets a node at a specific index in a list

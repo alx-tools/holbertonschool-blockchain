@@ -8,7 +8,8 @@
  */
 uint8_t _get_endianness(void)
 {
-	union {
+	union
+	{
 		uint32_t value;
 		uint8_t bytes[4];
 	} order = { 1 };

@@ -51,22 +51,23 @@ static int _tx_out_print(tx_out_t const *out, unsigned int idx,
 	return (0);
 }
 
-int _transaction_print_loop(transaction_t const *transaction,
+int _transaction_print_brief_loop(transaction_t const *transaction,
 	unsigned int idx, char const *indent)
 {
+	tx_out_t const *out;
+
 	if (!transaction)
 		return (0);
 
+	out = llist_get_head(transaction->outputs);
+
 	printf("%sTransaction: {\n", indent);
 
-	printf("%s\tinputs [%u]: [\n", indent, llist_size(transaction->inputs));
-	llist_for_each(transaction->inputs, (node_func_t)_tx_in_print,
-		(void *)indent);
-	printf("%s\t],\n", indent);
-	printf("%s\toutputs [%u]: [\n", indent, llist_size(transaction->outputs));
-	llist_for_each(transaction->outputs, (node_func_t)_tx_out_print,
-		(void *) indent);
-	printf("%s\t],\n", indent);
+	printf("%s\tamount: %u from %d inputs,\n", indent, out->amount,
+		llist_size(transaction->inputs));
+	printf("%s\treceiver: ", indent);
+	_print_hex_buffer(out->pub, EC_PUB_LEN);
+	printf("\n");
 	printf("%s\tid: ", indent);
 	_print_hex_buffer(transaction->id, sizeof(transaction->id));
 	printf("\n");
@@ -78,23 +79,26 @@ int _transaction_print_loop(transaction_t const *transaction,
 }
 
 /**
- * _transaction_print - Prints the content of a transaction structure
+ * _transaction_print_brief - Prints the content of a transaction structure
  *
  * @transaction: Pointer to the transaction structure to be printed
  */
-void _transaction_print(transaction_t const *transaction)
+void _transaction_print_brief(transaction_t const *transaction)
 {
+	tx_out_t const *out;
+
 	if (!transaction)
 		return;
 
+	out = llist_get_head(transaction->outputs);
+
 	printf("Transaction: {\n");
 
-	printf("\tinputs [%u]: [\n", llist_size(transaction->inputs));
-	llist_for_each(transaction->inputs, (node_func_t)_tx_in_print, "\t");
-	printf("\t],\n");
-	printf("\toutputs [%u]: [\n", llist_size(transaction->outputs));
-	llist_for_each(transaction->outputs, (node_func_t)_tx_out_print, "\t");
-	printf("\t],\n");
+	printf("\tamount: %u from %d inputs,\n", out->amount,
+		llist_size(transaction->inputs));
+	printf("\treceiver: ");
+	_print_hex_buffer(out->pub, EC_PUB_LEN);
+	printf("\n");
 	printf("\tid: ");
 	_print_hex_buffer(transaction->id, sizeof(transaction->id));
 	printf("\n");
