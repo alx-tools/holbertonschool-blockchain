@@ -52,7 +52,7 @@ typedef int (*node_func_t)(llist_node_t node, unsigned int idx, void *arg);
 typedef void (*node_dtor_t)(llist_node_t node);
 
 /**
- * comparator - Compares two nodes
+ * node_cmp_t - Function to compare two nodes
  *
  * @first:  Pointer to the first node
  * @second: Pointer to the second node
@@ -64,7 +64,7 @@ typedef void (*node_dtor_t)(llist_node_t node);
 typedef int (*node_cmp_t)(llist_node_t first, llist_node_t second, void *arg);
 
 /**
- * identifier_t - Identifies a node
+ * node_ident_t - Function to identify a node
  *
  * @node: Pointer to the node to identify
  * @arg:  Extra user-defined parameter

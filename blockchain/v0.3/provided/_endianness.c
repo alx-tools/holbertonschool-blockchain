@@ -1,5 +1,4 @@
-#include <stdint.h>
-#include <stddef.h>
+#include "endianness.h"
 
 /**
  * _get_endianness - Get current endianness
@@ -8,11 +7,7 @@
  */
 uint8_t _get_endianness(void)
 {
-	union
-	{
-		uint32_t value;
-		uint8_t bytes[4];
-	} order = { 1 };
+	_endian_t order = { 1 };
 
 	if (order.bytes[0] == 1)
 		return (1); /* Little endian */
@@ -22,7 +17,13 @@ uint8_t _get_endianness(void)
 	return (0); /* Should not happen */
 }
 
-void _swap_endian(char *n, size_t size)
+/**
+ * _swap_endian - Swap endianness
+ *
+ * @n:    Address of the sequence to swap
+ * @size: Size of the sequence pointed to by @n
+ */
+void _swap_endian(uint8_t *n, size_t size)
 {
 	size_t i;
 
