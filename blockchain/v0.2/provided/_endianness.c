@@ -20,12 +20,13 @@ uint8_t _get_endianness(void)
 /**
  * _swap_endian - Swap endianness
  *
- * @n:    Address of the sequence to swap
- * @size: Size of the sequence pointed to by @n
+ * @p:    Address of the sequence to swap
+ * @size: Size of the sequence pointed to by @p
  */
-void _swap_endian(uint8_t *n, size_t size)
+void _swap_endian(void *p, size_t size)
 {
 	size_t i;
+	uint8_t *n = (uint8_t *)p;
 
 	for (i = 0; i < size / 2; i++)
 	{
