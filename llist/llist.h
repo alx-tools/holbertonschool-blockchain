@@ -109,8 +109,8 @@ int llist_destroy(llist_t *list, int destroy_nodes, node_dtor_t destructor);
 /**
  * llist_add_node - Adds a node to a list
  *
- * @list:  Poitner to the list to add a node to
- * @node:  Poitner to the data to add as a node
+ * @list:  Pointer to the list to add a node to
+ * @node:  Pointer to the data to add as a node
  * @flags: Value can be `ADD_NODE_FRONT` or `ADD_NODE_REAR`
  *
  * Return: 0 upon success. Upon failure, -1 is returned, andthe global variable
@@ -122,7 +122,7 @@ int llist_add_node(llist_t *list, llist_node_t node, int flags);
  * llist_insert_node - Inserts a node at a specific location in a list
  *
  * @list:       Pointer to the list to insert a node into
- * @node:       Poitner to the data to add as a node
+ * @node:       Pointer to the data to add as a node
  * @identifier: Function called to identify the reference node from
  *              the list. The first node for which this function returns
  *              a non-zero value will be considered the reference.
